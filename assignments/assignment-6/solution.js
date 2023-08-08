@@ -1,3 +1,5 @@
+// part 1
+
 function filterOddNumbers(array) {
     const oddNumArray = [];
 
@@ -75,6 +77,51 @@ function filterPerfectSquares(array) {
 
 console.log(filterPerfectSquares([1, 4, 5, 9, 16])); // Output: [1, 4, 9, 16] );
 
-function tester(array, callback) {
-    return callback(array);
+// USING CALLBACK NOW !!!
+
+function filterArray(array, callback) {
+    const filteredArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        const number = array[i];
+
+        if (callback(number)) {
+            filteredArray.push(number);
+        }
+    }
+    return filteredArray;
 }
+
+function isOdd(number) {
+    return number % 2 !== 0;
+}
+
+function isDivisibleByThree(number) {
+    return number % 3 === 0;
+}
+
+function isPrimeNumber(number) {
+    if (number < 2) {
+        return false;
+    }
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isPerfectSquare(number) {
+    const sqrt = Math.sqrt(number);
+    return Math.floor(sqrt) === sqrt;
+}
+
+const arrayInput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 20];
+
+console.log(filterArray(arrayInput, isOdd));
+console.log(filterArray(arrayInput, isDivisibleByThree));
+console.log(filterArray(arrayInput, isPrimeNumber));
+console.log(filterArray(arrayInput, isPerfectSquare));
+
+// part 2
