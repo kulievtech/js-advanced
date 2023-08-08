@@ -74,3 +74,7 @@ function filterPerfectSquares(array) {
 }
 
 console.log(filterPerfectSquares([1, 4, 5, 9, 16])); // Output: [1, 4, 9, 16] );
+
+function tester(array, callback) {
+    return callback(array);
+}
