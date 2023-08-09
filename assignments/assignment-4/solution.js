@@ -32,7 +32,12 @@ class GradeBook {
     }
 
     getGrades(subject) {
-        return this.grades[subject] || []; // question
+        if (this.grades[subject]) {
+            return this.grades[subject];
+        } else {
+            return [];
+        }
+        // return this.grades[subject] || []; // question
     }
 
     getAllGrades() {
@@ -75,8 +80,7 @@ class Student extends Person {
     }
 
     getRole() {
-        super.getRole();
-        return "Student";
+        return `I am ${super.getRole}, and at the same time Student`;
     }
 
     countInstances() {
@@ -85,6 +89,7 @@ class Student extends Person {
 }
 
 // const student1 = new Student("Alex");
+student.getRole();
 
 // console.log(student1.introduceYourself());
 // console.log(student1.countInstances());
@@ -118,7 +123,6 @@ class Teacher extends Person {
     }
 
     getRole() {
-        super.getRole();
         return "Teacher";
     }
 
