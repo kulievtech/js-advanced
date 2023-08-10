@@ -182,7 +182,7 @@ function personalLibrary() {
             for (let i = 0; i < books.length; i++) {
                 if (books[i] === book) {
                     books.splice(i, 1);
-                    break; // Remove only the first occurrence
+                    break;
                 }
             }
         },

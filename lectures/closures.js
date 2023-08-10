@@ -38,3 +38,17 @@ function func1(num1) {
 
 const result = func1(5)(5)(10);
 console.log(result);
+
+// Write a function that takes array of numbers. Numbers are unique (not repeated) but mixed up (not sorted). And it takes a number. Remove a number and return a new array. New array should not have that number.
+
+// example [1, 5, 7, 3, 9] = > [1, 5, 7, 9]
+
+function removeNumFromArray(array, num) {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== num) {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
