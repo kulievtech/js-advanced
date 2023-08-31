@@ -1,0 +1,11 @@
+{
+  "name": "assignment-14",
+  "version": "1.0.0",
+  "description": "data-reading",
+  "main": "npm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tohir",
+  "license": "ISC"
+}
