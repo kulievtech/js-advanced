@@ -1,8 +1,8 @@
 const fs = require("fs");
 
 class Data {
-    read(urlFile) {
-        return fs.readFileSync(urlFile, "utf-8");
+    readAll(fileUrl) {
+        return fs.readFileSync(fileUrl, "utf-8");
     }
 
     parse(content) {
@@ -14,10 +14,11 @@ class Data {
     }
 
     format(urlFile) {
-        const content = this.read(urlFile);
+        const content = this.readAll(urlFile);
         const all = this.parse(content);
         const header = this.parseRow(all[0]);
         const rows = all.slice(1);
+
         const formattedData = rows.map((row) => {
             const personArr = this.parseRow(row);
             const personObj = {};
@@ -25,18 +26,19 @@ class Data {
             for (let i = 0; i < header.length; i++) {
                 const label = header[i];
                 const value = personArr[i];
+
                 personObj[label] = value;
             }
-
             return personObj;
         });
         return formattedData;
     }
+
     countByProfession(urlFile) {
         const newDataFormat = this.format(urlFile);
 
-        const professionCount = newDataFormat.reduce((acc, personObj) => {
-            const profession = personObj.Profession;
+        const professionCount = newDataFormat.reduce((acc, person) => {
+            const profession = person.Profession;
 
             if (acc[profession]) {
                 acc[profession]++;
@@ -75,13 +77,7 @@ class Data {
 
 const data = new Data();
 
-const newDataFormat = data.format("data.csv");
-console.log(newDataFormat);
-
-const professionCount = data.countByProfession("data.csv");
-
-console.log(professionCount);
-
-const ageRangeCount = data.countByAgeRange("data.csv");
-
-console.log(ageRangeCount);
+console.log(data.readAll("data.csv"));
+// console.log(data.parse("data.csv"));
+// console.log(data.parseRow("data.csv"));
+console.log(data.countByAgeRange("data.csv"));
